@@ -2,10 +2,10 @@ const startBtn = document.querySelector('#start');
 const screens = document.querySelectorAll('.screen');
 const timeList = document.querySelector('#time-list');
 const board = document.querySelector('#board');
-let time = 6;
+let time = 0;
 let timeCounter = document.querySelector('#time');
 let score = 0;
-let randomColor = ['#16D9E3', '#f89696', '#acb844', '#824f86'];
+let colors = ['#16D9E3', '#f89696', '#acb844', '#824f86', '#e2d241', '#fafdff', '#f580e1'];
 
 
 startBtn.addEventListener('click', () => {
@@ -65,17 +65,18 @@ function createRandomCircle() {
     circle.classList.add('circle');
     circle.style.width = `${size}px`;
     circle.style.height = `${size}px`;
-
-
+    circle.style.background = randomColor();
 
     board.append(circle);
+
 }
+
 
 function getRandomNumber(min, max) {
     return Math.round(Math.random() * (max - min) + min);
 }
 
-
-
-//DEBUG
-startGame();
+function randomColor() {
+    let index = Math.floor(Math.random() * colors.length);
+    return colors[index];
+}
